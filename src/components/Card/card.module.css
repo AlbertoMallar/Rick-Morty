@@ -1,0 +1,65 @@
+
+.cardWords{
+    font-family: cursive;
+    font-size: 15px;
+    color: rgb(239, 191, 191);
+}
+
+.cardImage{
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: rgb(88, 79, 19);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    border: 1px solid rgb(26, 43, 140);
+    border-radius: 5px;
+    padding: 25px;
+    cursor: pointer;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+  
+    &:hover {
+      transform: scale(1.05);
+    }
+}
+
+.imageContainer{
+    border: 1px solid rgb(88, 79, 19);
+}
+
+.cardButton{
+    opacity: 0.7;
+    position: absolute; 
+    bottom: 1px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #394747;
+    color: rgba(255, 0, 0, 0.714);
+}
+
+.cardButton:hover {
+    background-color: rgba(255, 0, 0, 0.408);
+    color: red;
+}
+
+.atributes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: right;
+    width: 10%;
+    height: auto;
+    font-size: smaller;
+    color: darkgrey;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}

@@ -1,0 +1,33 @@
+
+
+.inputContainer{
+    background-color: rgb(34, 33, 33);
+}
+
+.alertMessages{
+    color: red;
+    font-family: cursive;
+    font-size: small;
+}
+
+.words{
+    font-family: cursive;
+    font-size: 15px;
+    color: rgb(72, 94, 66);
+}
+
+.formContainer{
+    border: solid, 3px, rgb(228, 222, 222);
+    padding: 25px;
+    cursor: pointer;
+    margin-top: 10%;
+    height: 300px;
+    background-origin: inherit;
+    background-size: cover;
+    background-position: 50%;
+    background-image: url('../../../assets/celu\ negro-fotor-bg-remover-20230623135645.png');
+}
+
+.loginButton{
+
+}

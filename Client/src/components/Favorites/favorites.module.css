@@ -1,0 +1,10 @@
+.favoritesContainer{
+    margin-top: 20px;
+    display: flex;
+}
+
+.filterContainer{
+    display: flex;
+    margin-right: 300px;
+    margin-top: 200px;
+  };

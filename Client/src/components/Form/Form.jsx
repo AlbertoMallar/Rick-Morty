@@ -52,8 +52,9 @@ export default function Form(){
                 <div className={styles.inputContainer}>
                     <label className={styles.words}></label>
                     <input
+                    className={styles.inputBox}
                     type="text"
-                    placeholder="Ingresa tu correo"
+                    placeholder="Users email"
                     value={userData.email}
                     name="email"
                     onChange={handleChange}
@@ -63,17 +64,20 @@ export default function Form(){
                 <div className={styles.inputContainer}>
                     <label className={styles.words}></label>
                     <input
+                    className={styles.inputBox}
                     type="password"
-                    placeholder="Ingresa tu password"
+                    placeholder="Password"
                     value={userData.password}
                     name="password"
                     onChange={handleChange}
                     />
                     <span className={styles.alertMessages}>{errors.password}</span>
                 </div>
-                {errors.email || errors.password ? null : (
-                <button className={styles.words} type="submit">Ingresa</button>
-        )}
+                <div className={styles.buttonContainer}>
+                    {errors.email || errors.password ? null : (
+                    <button className={styles.button} type="submit">Log in</button>
+                    )}
+                </div>
             </form>
         </div>
     )

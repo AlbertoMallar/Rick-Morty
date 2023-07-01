@@ -1,0 +1,25 @@
+.detailContainer {
+    border-radius: 5%;
+    background-image: url('../../../../assets/Espacio.jpeg');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 160px;
+}
+
+.detailText{
+    margin-right: 20px;
+    text-align: left;
+    font-family: 'Lobster', cursive;
+    font-size: 18px;
+    color: rgb(144, 196, 133);
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.detailImg{
+    width: 400px;
+    border-radius: 5%;
+}

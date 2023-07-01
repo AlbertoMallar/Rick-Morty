@@ -1,7 +1,7 @@
 import { ADD_FAV, REMOVE_FAV, FILTER, ORDER, RESET } from "./actions/types";
 
 
-const initialState = {
+let initialState = {
     myFavorites: [],
     myFavoritesOrigin: [] // Solo lo modifican el ADD y el REMOVE
 };
@@ -16,33 +16,38 @@ const rootReducer = (state = initialState, {type, payload}) => {
             };
 
 
-        case 'REMOVE_FAV':
+        case REMOVE_FAV:
             return { 
                 ...state,
                 myFavorites: payload,
-                myFavoritesOrigin: payload
                 };
 
 
         case FILTER:
-            let newFilter = state.myFavoritesOrigin.filter((p) => 
-                p.gender === payload);
-            return{
+            return {
                 ...state,
-                myFavorites: newFilter,
+                myFavorites: state.myFavoritesOrigin.filter(
+                    (ch) => ch.gender === payload
+                ),
             };
+
         case ORDER:
-            const newOrder = state.myFavoritesOrigin.sort((a,b) => {
-                if(a.id>b.id){
-                    return 'Ascendente' === payload ? 1 : -1 // si el payload es ascendente entonces vamos a ordenar en orden 1, si no -1
-                } else {
-                    return 'Descendente' === payload ? 1 : -1
+            let ordenados = state.myFavoritesOrigin;
+                if(payload === 'Ascendente') {
+                    ordenados.sort((a, b) => (a.id - b.id))}
+                if (payload === 'Descendente') {
+                    ordenados.sort((a, b) => (b.id - a.id))
                 }
-            });
+            return {
+                ...state,
+                myFavorites: [...ordenados],
+            }
+
+
         case RESET:
             return{
                 ...state,
-                myFavorites: [...state.myFavoritesOrigin],
+                myFavorites: state.myFavoritesOrigin,
             };
         default:
             return state

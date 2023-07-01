@@ -2,11 +2,19 @@ import style from './card.module.css';
 import { Link } from 'react-router-dom';
 import { addFav, removeFav } from '../../Redux/actions/actions';
 import { connect } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';                                                                                                                                                                                                                                                                                                                                                             
 
 export  function Card (props) {
    const {character, onClose, myFavorites, addFav, removeFav} = props;
    const [isFav, setIsFav] = useState(false);
+  const [closeButton, setCloseBtn] = useState(true);
+
+  useEffect(() => {
+   if (!onClose) {
+     setCloseBtn(false);
+   }
+   }, []);
+
 
    useEffect(() => {
       if (myFavorites && character && character.id) {
@@ -16,7 +24,7 @@ export  function Card (props) {
             }
          });
       }
-   }, [props.myFavorites, props.character]);
+   }, [myFavorites, character]);
 
    function handleFavorite(){
       if (isFav){
@@ -30,8 +38,8 @@ export  function Card (props) {
 
 
    return (
-      <div className={style.container}>
-         <div className={style.imageContainer}>
+      <div>
+         <div className={style.container}>
             <img 
                className={style.cardImage} 
                src={character.image} 
@@ -39,27 +47,35 @@ export  function Card (props) {
             />
             {
                isFav ? (
-                  <button onClick={handleFavorite}>❤️</button>
+                  <button onClick={handleFavorite} className={style.favoriteButton}>❤️</button>
                      ) : (
-                  <button onClick={handleFavorite}>🤍</button>
+                  <button onClick={handleFavorite} className={style.favoriteButton}>🤍</button>
                   )
             }
             <Link to={`/detail/${character.id}`} >
                <h2 className={style.cardWords}>{character.name}</h2>
             </Link>
-            <button 
-            className={style.cardButton} 
-            onClick={() => {
-               onClose(character.id);
-            }}>X</button>
+            {closeButton && (
+            <button
+               className={style.cardButton}
+               onClick={() => {
+                  onClose(character.id);
+               }}
+               >
+                  X
+            </button>
+            )}
          </div>
+         
+      </div>
+   );
+}
+/*
          <div className={style.atributes}>
             <h2>{character.species}</h2>
             <h2>{character.gender}</h2>
          </div>
-      </div>
-   );
-}
+*/
 
 
 export function mapDispatchToProps(dispatch){

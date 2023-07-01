@@ -1,29 +1,114 @@
 
 
-.inputContainer{
-    background-color: rgb(34, 33, 33);
-}
+.inputContainer {
+    position: relative;
+    top: 80%; /* Ajusta la posición vertical según tus necesidades */
+    left: 40%; /* Ajusta la posición horizontal según tus necesidades */
+    transform: translate(-50%, -50%); /* Centra el contenedor en base a su tamaño */
+    width: 300px; /* Ajusta el ancho según tus necesidades */
+    background-color: transparent; /* Establece el fondo como transparente */
+    padding: 20px; /* Ajusta el padding según tus necesidades */
+    border-radius: 8px; /* Ajusta el radio del borde según tus necesidades */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Agrega una sombra al contenedor */
+  }
+
+  .inputBox {
+    position: relative;
+    top: 5%; /* Ajusta la posición vertical según tus necesidades */
+    left: 40%; /* Ajusta la posición horizontal según tus necesidades */
+    transform: translate(-50%, -50%); /* Centra el contenedor en base a su tamaño */
+    width: 120px; /* Ajusta el ancho según tus necesidades */
+    height: 10px;
+    color: rgba(236, 236, 236, 0.2);
+    background-color: transparent; /* Establece el fondo como transparente */
+    padding: 8px; /* Ajusta el padding según tus necesidades */
+    border-radius: 8px; /* Ajusta el radio del borde según tus necesidades */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Agrega una sombra al contenedor */
+    border: 1px solid rgba(236, 236, 236, 0.2);
+  }
+
+  input.inputBox:-webkit-autofill {
+    /* Estilos para el fondo del input cuando se autocompleta */
+    background-color: transparent !important;
+    color: rgba(236, 236, 236, 0.2) !important;
+  }
+  
+  input.inputBox:-webkit-autofill::placeholder {
+    /* Estilos para el color del texto del placeholder cuando se autocompleta */
+    color: rgba(236, 236, 236, 0.2) !important;
+  }
+
+  input::placeholder {
+    color: rgba(236, 236, 236, 0.2); /* Ajusta el color del texto del placeholder según tus necesidades */
+    background-color: transparent; /* Establece el fondo como transparente para el placeholder */
+  }
+
+  input:focus::placeholder {
+    color: rgba(236, 236, 236, 0.2); /* Color del texto del placeholder cuando el input está enfocado */
+  }
 
 .alertMessages{
-    color: red;
+    position: absolute;
+    bottom: 16px;
+    left: 80px;
+    color: rgba(236, 236, 236, 0.2);
     font-family: cursive;
-    font-size: small;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: -10px;
+}
+
+.button {
+    border-radius: 25px;
+    background: transparent;
+    font-size: 12px; /* Ajusta el tamaño de fuente según tus necesidades */
+    font-family: cursive;
+    width: 65px; /* Ajusta el ancho según tus necesidades */
+    height: 30px; /* Ajusta la altura según tus necesidades */
+  }
+  
+.buttonContainer {
+    position: relative;
+    text-align: center;
+    top: 90px;
+    left: -70px;
+}
+
+.label{
+    font-family: cursive;
+    font-size: 15px;
 }
 
 .words{
     font-family: cursive;
     font-size: 15px;
-    color: rgb(72, 94, 66);
+    color: rgb(255, 255, 255);
 }
 
 .formContainer{
-    border: solid, 3px, rgb(228, 222, 222);
-    padding: 25px;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 10%;
-    height: 300px;
-    background-origin: inherit;
-    background-size: cover;
-    background-position: 50%;
-    background-image: url('../../../assets/celu\ negro-fotor-bg-remover-20230623135645.png');
+    height: 500px;
+    width: 300px;
+    background-size: contain;
+    background-position-y: center;
+    background-image: url('../../../assets/Celu Morty.png');
+    background-repeat: no-repeat;
+    background-image: url('../../../assets/Celu\ Morty.png');
+    /*
+    .formContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+}
+    */
 }

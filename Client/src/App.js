@@ -1,15 +1,16 @@
-import './App.css';
-//import Card from './components/Card.jsx';
-import Cards from './components/Cards/Cards.jsx';
-//import characters from './data.js';
-import NavBar from './components/NavBar/NavBar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import './App.css';
+import Cards from './components/Cards/Cards.jsx';
+import NavBar from './components/NavBar/NavBar';
 import About from './components/About/About';
-import Detail from './components/About/Detail';
+import Detail from './components/About/Detail/Detail';
 import Form from './components/Form/Form';
-import { Favorites } from './components/Favorites/Favorites';
+import ErrorPage from './components/Error'
+import  Favorites  from './components/Favorites/Favorites';
+import { useDispatch } from 'react-redux';
+import { removeFav } from './Redux/actions/actions';
 const URL = 'http://localhost:3001/rickandmorty/login/';
 
 
@@ -17,8 +18,9 @@ function App() {
 
    const [characters, setCharacters] = useState([])
    const [access, setAccess] = useState(true);
-   const navigate = useNavigate();
    const location = useLocation();
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
 
 
 
@@ -27,7 +29,7 @@ function App() {
          const { email, password } = userData;
          const {data} = await axios(URL + `?email=${email}&password=${password}`)
             const { access } = data;
-            setAccess(access);
+            setAccess(data);
             access && navigate('/home');
          
       } catch (error) {
@@ -35,8 +37,12 @@ function App() {
       }
    }
 
+   useEffect(() => {
+      !access && navigate('/');
+   }, [access])
+
    const onSearch = async (id) => {
-      const isCharacterAdded = characters.find((character) => character.id === Number(id));
+      let isCharacterAdded = characters.find((character) => character.id === Number(id));
    
       if (isCharacterAdded) {
          window.alert('¡La carta ya está agregada!');
@@ -48,14 +54,14 @@ function App() {
             setCharacters((oldChars) => [...oldChars, data]);
          };
       } catch (error) {
-         alert('¡No hay personajes con este ID!');
+         window.alert('¡No hay personajes con este ID!');
       }
    };
 
    function addRandom() {
       const minId = 1;
       const maxId = 826;
-      const randomId = Math.floor(Math.random() * (maxId - minId + 1)) + minId;;
+      let randomId = Math.floor(Math.random() * (maxId - minId + 1)) + minId;;
 
       const isCharacterAdded = characters.find((character) => character.id === Number(randomId));
       while (isCharacterAdded) {
@@ -80,18 +86,23 @@ function App() {
    function onClose(id) {
       let deleted = characters.filter((character) => character.id !== Number(id));
 
+      dispatch(removeFav(id))
+
       setCharacters(deleted);
    }
 
    return (
       <div className='App'>
+         {location.pathname !== '/' &&(
          <NavBar onSearch={onSearch} addRandom={addRandom} />
+         )}
             <Routes>
+               <Route path='/' element={<Form login={login}/>} />
                <Route path='/Home' element={<Cards characters={characters} onClose={onClose}/>}/>
                <Route path='/About' element={<About/>}/>
                <Route path='/Detail/:id' element={<Detail/>}/>
-               <Route path='/' element={<Form/>} />
                <Route path='/Favorites' element={<Favorites/>}/>
+               <Route patj='*' element={<ErrorPage/>}/>
             </Routes>
       </div>
    );

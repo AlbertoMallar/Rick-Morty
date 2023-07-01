@@ -1,0 +1,39 @@
+.appWords{
+    font-family: cursive;
+    font-size: 20px;
+    color: rgb(172, 172, 172);
+    font-weight: 400;
+    font-style: oblique;
+    font-variant: initial;
+ }
+
+ .links {
+   margin-right: 5px;
+   font-family: cursive;
+   font-size: 20px;
+   color: rgb(221, 217, 247);
+   font-weight: 400;
+   font-style: oblique;
+   font-variant: initial;
+ }
+
+ .signature{
+   font-family: cursive;
+   font-size: 20px;
+   color: rgb(255, 255, 255);
+   font-weight: 400;
+   font-style: oblique;
+   font-variant: initial;
+   margin-left: 600px;
+ }
+
+ .containerAbout {
+   background-image: url('../../../assets/Espacio.jpeg');
+   background-size: cover;
+   background-position: center;
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+ }
